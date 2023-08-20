@@ -15,12 +15,33 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('front-end.home');
+});
+
+
+// Route::get('/admin', function () {
+//     return view('back-end.home');
+// });
+
+Route::resource('demo', 'DemoController');
+
+// Home
+Route::resource('admin', 'BackEndController');
+Route::get('ad/dashboard', 'BackEndController@dashboard')->name('backEnd.dashboard');
+
+
+
+
+
+
+
+Route::get('/w', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
