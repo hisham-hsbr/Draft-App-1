@@ -47,6 +47,7 @@
 
 
 
+
 <script>
     var phoenixIsRTL = window.config.config.phoenixIsRTL;
     if (phoenixIsRTL) {

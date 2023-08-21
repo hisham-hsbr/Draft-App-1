@@ -1983,6 +1983,7 @@
         </div>
     </div>
 </div> --}}
+@endsection
 @section('add-footer-links')
     <script src="{{ asset('back-end-links/phoenix/public/vendors/echarts/echarts.min.js') }}"></script>
     <script src="{{ asset('back-end-links/phoenix/public/vendors/leaflet/leaflet.js') }}"></script>
@@ -1992,5 +1993,4 @@
         src="{{ asset('back-end-links/phoenix/public/vendors/leaflet.tilelayer.colorfilter/leaflet-tilelayer-colorfilter.min.js') }}">
     </script>
     <script src="{{ asset('back-end-links/phoenix/public/assets/js/ecommerce-dashboard.js') }}"></script>
-@endsection
 @endsection

@@ -26,8 +26,10 @@ Route::get('/', function () {
 Route::resource('demo', 'DemoController');
 
 // Home
-Route::resource('admin', 'BackEndController');
-Route::get('ad/dashboard', 'BackEndController@dashboard')->name('backEnd.dashboard');
+Route::resource('admin/dashboard', 'BackEndController');
+
+Route::resource('admin/roles', 'RoleController');
+Route::resource('admin/bloods', 'BloodController');
 
 
 
@@ -35,13 +37,13 @@ Route::get('ad/dashboard', 'BackEndController@dashboard')->name('backEnd.dashboa
 
 
 
-Route::get('/w', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

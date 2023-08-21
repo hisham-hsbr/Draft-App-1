@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Demo;
+use App\Models\Blood;
 use Illuminate\Http\Request;
 
-class DemoController extends Controller
+class BloodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,7 @@ class DemoController extends Controller
     public function index()
     {
         //
-        // dd("welcome to Demo");
-        $demo = Demo::all();
-        return view('demo.demo', compact('demo'));
+        return view('back-end.admin.bloods.index');
     }
 
     /**
@@ -24,6 +22,7 @@ class DemoController extends Controller
     public function create()
     {
         //
+        return view('back-end.admin.bloods.create');
     }
 
     /**
@@ -37,15 +36,16 @@ class DemoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Demo $demo)
+    public function show(Blood $blood)
     {
         //
+        return view('back-end.admin.bloods.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Demo $demo)
+    public function edit(Blood $blood)
     {
         //
     }
@@ -53,7 +53,7 @@ class DemoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Demo $demo)
+    public function update(Request $request, Blood $blood)
     {
         //
     }
@@ -61,7 +61,7 @@ class DemoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Demo $demo)
+    public function destroy(Blood $blood)
     {
         //
     }

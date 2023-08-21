@@ -2,20 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Demo;
+use App\Models\Role;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 
-class DemoController extends Controller
+class RoleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index(Request $request)
     {
         //
-        // dd("welcome to Demo");
-        $demo = Demo::all();
-        return view('demo.demo', compact('demo'));
+        return view('back-end.admin.roles.index');
     }
 
     /**
@@ -24,6 +28,8 @@ class DemoController extends Controller
     public function create()
     {
         //
+        $permissions = Permission::all()->groupBy('parent');
+        return view('back-end.admin.roles.create',compact('permissions'));
     }
 
     /**
@@ -37,7 +43,7 @@ class DemoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Demo $demo)
+    public function show(Role $role)
     {
         //
     }
@@ -45,7 +51,7 @@ class DemoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Demo $demo)
+    public function edit(Role $role)
     {
         //
     }
@@ -53,7 +59,7 @@ class DemoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Demo $demo)
+    public function update(Request $request, Role $role)
     {
         //
     }
@@ -61,7 +67,7 @@ class DemoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Demo $demo)
+    public function destroy(Role $role)
     {
         //
     }
