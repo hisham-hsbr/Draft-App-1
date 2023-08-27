@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Spatie\Permission\Models\Permission;
 use App\Http\Requests\ProfileAvatarRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 
@@ -16,12 +17,20 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
     public function edit(Request $request): View
     {
 
-        return view('profile.edit', [
-            'user' => $request->user(),
-        ]);
+        $permissions = Permission::all()->groupBy('parent');
+        return view('back-end.profile.edit',compact('permissions'));
+
+        // return view('back-end.profile.edit', [
+        //     'user' => $request->user(),
+        // ]);
     }
 
     /**
@@ -29,6 +38,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        dd("update");
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {

@@ -32,25 +32,33 @@ Route::resource('admin/roles', 'RoleController');
 Route::resource('admin/bloods', 'BloodController');
 
 
+// Route::resource('admin/profile', 'ProfileController');
+Route::get('/admin/profile', 'ProfileController@edit')->name('profile.edit');
+Route::patch('/admin/profile', 'ProfileController@update')->name('profile.update');
+Route::patch('/admin/profile', 'ProfileController@avatar')->name('profile.avatar');
+Route::patch('/admin/profile/avatar/delete', 'ProfileController@avatarDelete')->name('profile.avatar.delete');
+Route::delete('/admin/profile', 'ProfileController@destroy')->name('profile.destroy');
 
 
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::patch('/profile/avatar', [ProfileController::class, 'avatar'])->name('profile.avatar');
-    Route::patch('/profile/avatar/delete', [ProfileController::class, 'avatarDelete'])->name('profile.avatar.delete');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::patch('/profile/avatar', [ProfileController::class, 'avatar'])->name('profile.avatar');
+//     Route::patch('/profile/avatar/delete', [ProfileController::class, 'avatarDelete'])->name('profile.avatar.delete');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';

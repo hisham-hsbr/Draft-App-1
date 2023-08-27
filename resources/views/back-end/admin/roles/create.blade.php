@@ -18,34 +18,38 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="p-4 code-to-copy">
-                                <form class="row g-3">
+                                <form class="row g-3"role="form" action="{{ route('roles.store') }}" method="post"
+                                    enctype="multipart/form-data" id="quickForm">
+                                    {{ csrf_field() }}
                                     <div class="col-12">
                                         <label class="form-label" for="role">Role Name</label>
-                                        <input class="form-control" id="role" type="text"
-                                            placeholder="Enter Role Name" />
+                                        <input class="form-control" id="role" type="text" name="name"
+                                            value="{{ old('name') }}" placeholder="Enter Role Name" />
                                     </div>
                                     <div class="col-6">
                                         <label class="form-label" for="organizerMultiple">Assign Permissions</label>
-                                        <select class="form-select" id="organizerMultiple" data-choices="data-choices"
+                                        <select class="form-select" name="permission[]" id="organizerMultiple" data-choices="data-choices"
                                             multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                            <option value="">Select Permission...</option>
-                                             @foreach ($permissions as $key => $value)
+                                            <option value="" >Select Permission...</option>
+                                            @foreach ($permissions as $key => $value)
                                                 @foreach ($value as $permission)
-                                                    <option>{{ $permission->name }}</option>
+                                                    <option value="{{ $permission->id }}"
+                                                        id="{{ $permission->id }}">{{ $permission->name }}</option>
                                                 @endforeach
-                                             @endforeach
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" id="gridCheck" type="checkbox" />
-                                            <label class="form-check-label" for="gridCheck">Active</label>
+                                            <input class="form-check-input" name="status" value="1" id="status"
+                                                type="checkbox" />
+                                            <label class="form-check-label" for="status">Active</label>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
 
-                                        <button class="btn btn-primary" type="submit">Sign in</button>
+                                        <button class="btn btn-primary" type="submit">Save</button>
                                     </div>
                                 </form>
                             </div>

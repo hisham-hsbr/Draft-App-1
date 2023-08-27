@@ -1,7 +1,8 @@
 <div class="bg-white sticky-top landing-navbar" data-navbar-shadow-on-scroll="data-navbar-shadow-on-scroll">
     <nav class="navbar navbar-expand-lg container-small px-3 px-lg-7 px-xxl-3"><a class="navbar-brand flex-1 flex-lg-grow-0" href="/">
-        <div class="d-flex align-items-center"><img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/logo.png') }}" alt="phoenix" width="27" />
-          <p class="logo-text ms-2">phoenix</p>
+        <div class="d-flex align-items-center">
+            <img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/mini_hsbr_logo.png') }}" alt="hsbr" width="27" />
+            <img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/hsbr_logo.png') }}" alt="hsbr" width="127" />
         </div>
       </a>
       <div class="d-lg-none">
