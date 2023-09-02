@@ -9,8 +9,8 @@
             <a class="navbar-brand me-1 me-sm-3" href="/">
                 <div class="d-flex align-items-center">
                     <div class="d-flex align-items-center">
-                        <img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/mini_hsbr_logo.png') }}" alt="hsbr"
-                            width="27" />
+                        {{-- <img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/mini_hsbr_logo.png') }}" alt="hsbr"
+                            width="27" /> --}}
                         <img src="{{ asset('back-end-links/phoenix/public/assets/img/icons/hsbr_logo.png') }}" alt="hsbr"
                             width="127" />
                         {{-- <p class="logo-text ms-2 d-none d-sm-block">phoenixsss</p> --}}
