@@ -1,0 +1,8 @@
+{
+    "emmet.triggerExpansionOnTab": true,
+    "blade.format.enable": true,
+    "artisan.docker.enabled": true,
+    "artisan.docker.command": "docker-compose exec <app>",
+    "editor.formatOnSave": true,
+    "files.autoSave": "onFocusChange"
+}
