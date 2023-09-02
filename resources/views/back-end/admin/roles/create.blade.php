@@ -5,6 +5,11 @@
 @endsection
 @section('main-content')
     <div class="mt-4">
+        @if (count($errors) > 0)
+            @foreach ($errors->all() as $error)
+                <p class="alert alert-danger">{{ $error }}</p>
+            @endforeach
+        @endif
         <div class="row g-4">
             <div class="col-12 col-xl-12 order-1 order-xl-0">
                 <div class="mb-9">
@@ -18,23 +23,31 @@
                         </div>
                         <div class="card-body p-0">
                             <div class="p-4 code-to-copy">
-                                <form class="row g-3"role="form" action="{{ route('roles.store') }}" method="post"
+                                <form class="row g-3" role="form" action="{{ route('roles.store') }}" method="post"
                                     enctype="multipart/form-data" id="quickForm">
                                     {{ csrf_field() }}
                                     <div class="col-12">
                                         <label class="form-label" for="role">Role Name</label>
                                         <input class="form-control" id="role" type="text" name="name"
                                             value="{{ old('name') }}" placeholder="Enter Role Name" />
+                                        @if (count($errors) > 0)
+                                            @foreach ($errors->get('name') as $error)
+                                                {{-- <p class="alert alert-danger">{{ $error }}</p> --}}
+                                                <label style="color: red" class="form-label" for="role">{{ $error }}</label>
+                                            @endforeach
+                                        @endif
                                     </div>
+
                                     <div class="col-6">
                                         <label class="form-label" for="organizerMultiple">Assign Permissions</label>
-                                        <select class="form-select" name="permission[]" id="organizerMultiple" data-choices="data-choices"
-                                            multiple="multiple" data-options='{"removeItemButton":true,"placeholder":true}'>
-                                            <option value="" >Select Permission...</option>
+                                        <select class="form-select" name="permission[]" id="organizerMultiple"
+                                            data-choices="data-choices" multiple="multiple"
+                                            data-options='{"removeItemButton":true,"placeholder":true}'>
+                                            <option value="">Select Permission...</option>
                                             @foreach ($permissions as $key => $value)
                                                 @foreach ($value as $permission)
-                                                    <option value="{{ $permission->id }}"
-                                                        id="{{ $permission->id }}">{{ $permission->name }}</option>
+                                                    <option value="{{ $permission->id }}" id="{{ $permission->id }}">
+                                                        {{ $permission->name }}</option>
                                                 @endforeach
                                             @endforeach
                                         </select>

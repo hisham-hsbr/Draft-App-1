@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Mail\SendEmailable;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +19,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('front-end.home');
+});
+
+
+
+Route::get('/sendEmail', function () {
+    Mail::to('hisham.hsbr@gmail.com')->send(new SendEmailable());
+    return 'email send hs';
+});
+
+
+
+Route::get('/demo-lang/{lang?}', function ($lang=null) {
+    App::setLocale($lang);
+    return view('demo.demo-lang');
 });
 
 
