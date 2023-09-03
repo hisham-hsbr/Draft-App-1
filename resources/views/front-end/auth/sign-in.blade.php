@@ -124,7 +124,7 @@
                         </div>
                         <button class="btn btn-primary w-100 mb-3">Sign In</button>
                         <div class="text-center"><a class="fs--1 fw-bold"
-                                href="{{ asset('back-end-links/phoenix/public/pages/authentication/simple/sign-up.html') }}">Create
+                                href="/register">Create
                                 an account</a></div>
                     </form>
                 </div>
