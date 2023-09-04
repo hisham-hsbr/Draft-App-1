@@ -35,7 +35,7 @@ class TaskCompleted extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
+                    ->line('Welcome to HSBR Apps.')
                     ->action('Login', url('https://hsbr.hsbr-apps.co/login'))
                     ->line('Thank you for using our application!');
     }
