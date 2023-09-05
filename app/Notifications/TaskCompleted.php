@@ -3,9 +3,10 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class TaskCompleted extends Notification
 {
@@ -16,7 +17,7 @@ class TaskCompleted extends Notification
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -26,7 +27,8 @@ class TaskCompleted extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        // return ['mail','database'];
+        return ['database'];
     }
 
     /**
@@ -49,6 +51,8 @@ class TaskCompleted extends Notification
     {
         return [
             //
+            'data'=>'This is my first notification',
+            'name' => Auth::user()->name,
         ];
     }
 }

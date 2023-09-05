@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use App\Mail\SendEmailable;
 use Illuminate\Support\Facades\App;
+use App\Notifications\TaskCompleted;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -27,6 +29,23 @@ Route::get('/sendEmail', function () {
     Mail::to('hisham.hsbr@gmail.com')->send(new SendEmailable());
     return 'email send hs';
 });
+
+Route::get('/notify', function () {
+    // $user=user::find(1);
+    User::find(1)->notify(new TaskCompleted);
+    return 'email send hs';
+});
+Route::get('markAsAllRead', function () {
+    // $user=user::find(1);
+    auth()->user()->unreadNotifications->markAsRead();
+    return redirect()->back();
+})->name('markAsAllRead');
+
+
+Route::get('/admin/markAsRead/{id}', 'DBNotificationController@markAsRead')->name('markAsRead');
+// Route::get('/demo/demo-notfy/create', 'DBNotificationController@create')->name('createNotfy');
+Route::get('/demo/demo-notfy/store', 'DBNotificationController@store')->name('n.store');
+Route::resource('/demo/demo-notfy', 'DBNotificationController');
 
 
 
