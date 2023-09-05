@@ -42,10 +42,10 @@ Route::get('markAsAllRead', function () {
 })->name('markAsAllRead');
 
 
-Route::get('/admin/markAsRead/{id}', 'DBNotificationController@markAsRead')->name('markAsRead');
+// Route::get('/admin/markAsRead/{id}', 'DBNotificationController@markAsRead')->name('markAsRead');
 // Route::get('/demo/demo-notfy/create', 'DBNotificationController@create')->name('createNotfy');
-Route::get('/demo/demo-notfy/store', 'DBNotificationController@store')->name('n.store');
-Route::resource('/demo/demo-notfy', 'DBNotificationController');
+// Route::get('/demo/demo-notfy/store', 'DBNotificationController@store')->name('n.store');
+// Route::resource('/demo/demo-notfy', 'DBNotificationController');
 
 
 
